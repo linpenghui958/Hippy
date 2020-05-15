@@ -48,7 +48,8 @@ typedef struct {
 typedef struct {
     CGColorRef boxShadowColor;
     float boxShadowOpacity;
-    CGSize boxShadowOffset;
+    CGFloat boxShadowOffsetHeight;
+    CGFloat boxShadowOffsetWidth;
 } HippyBoxShadow;
 
 /**

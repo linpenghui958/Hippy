@@ -175,21 +175,30 @@ HIPPY_CUSTOM_VIEW_PROPERTY(boxShadowColor, UIColor, HippyView)
   }
 }
 
-//HIPPY_CUSTOM_VIEW_PROPERTY(shadowColor, UIColor, HippyView) {
-//    if (json) {
-//        view.layer.shadowColor = [HippyConvert UIColor:json].CGColor;
-//    }
-//    else {
-//        view.layer.shadowColor = [UIColor blackColor].CGColor;
-//    }
-//}
+HIPPY_CUSTOM_VIEW_PROPERTY(boxShadowOffsetWidth, CGFloat, HippyView)
+{
+  if ([view respondsToSelector:@selector(setBoxShadowOffsetWidth:)]) {
+    view.boxShadowOffsetWidth = json ? [HippyConvert CGFloat:json] : defaultView.boxShadowOffsetWidth;
+  } else {
+      view.layer.borderWidth = 0;
+  }
+}
+
+HIPPY_CUSTOM_VIEW_PROPERTY(boxShadowOffsetHeight, CGFloat, HippyView)
+{
+  if ([view respondsToSelector:@selector(setBoxShadowOffsetHeight:)]) {
+    view.boxShadowOffsetHeight = json ? [HippyConvert CGFloat:json] : defaultView.boxShadowOffsetHeight;
+  } else {
+      view.layer.borderWidth = 0;
+  }
+}
 
 HIPPY_CUSTOM_VIEW_PROPERTY(boxShadowOpacity, CGFloat, HippyView)
 {
   if ([view respondsToSelector:@selector(setBoxShadowOpacity:)]) {
     view.boxShadowOpacity = json ? [HippyConvert CGFloat:json] : defaultView.boxShadowOpacity;
   } else {
-//    view.layer.borderColor = json ? [HippyConvert CGColor:json] : defaultView.layer.borderColor;
+    view.layer.shadowOpacity = json ? [HippyConvert CGFloat:json] : defaultView.layer.shadowOpacity;
   }
 }
 

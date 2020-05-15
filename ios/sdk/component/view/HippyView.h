@@ -88,7 +88,8 @@
 * BoxShadow.
 */
 @property (nonatomic, assign) CGColorRef boxShadowColor;
-@property (nonatomic, assign) CGSize boxShadowOffset;
+@property (nonatomic, assign) CGFloat boxShadowOffsetWidth;
+@property (nonatomic, assign) CGFloat boxShadowOffsetHeight;
 @property (nonatomic, assign) CGFloat boxShadowOpacity;
 
 /**

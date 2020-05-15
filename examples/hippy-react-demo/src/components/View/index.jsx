@@ -48,7 +48,7 @@ export default function ViewExpo() {
     <ScrollView style={{ padding: 10 }}>
 
       {renderTitle('boxshadow')}
-      <View style={[styles.rectangle, { backgroundColor: '#ababab', boxShadowColor: '#ff0000', boxShadowOffset:"5 5", boxShadowOpacity: 0.2 }]} />
+      <View style={[styles.rectangle, { backgroundColor: '#ababab', boxShadowColor: '#00ff00', boxShadowOffsetWidth:5, boxShadowOffsetHeight: 5, boxShadowOpacity: 0.2 }]} />
       {renderTitle('backgroundColor')}
       <View style={[styles.rectangle, { backgroundColor: '#4c9afa' }]} />
       {renderTitle('border props')}
