@@ -45,6 +45,12 @@ typedef struct {
   CGColorRef right;
 } HippyBorderColors;
 
+typedef struct {
+    CGColorRef boxShadowColor;
+    float boxShadowOpacity;
+    CGSize boxShadowOffset;
+} HippyBoxShadow;
+
 /**
  * Determine if the border widths, colors and radii are all equal.
  */

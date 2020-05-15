@@ -207,7 +207,7 @@ static UIImage *HippyGetSolidBorderImage(HippyCornerRadii cornerRadii,
 {
   const BOOL hasCornerRadii = HippyCornerRadiiAreAboveThreshold(cornerRadii);
   const HippyCornerInsets cornerInsets = HippyGetCornerInsets(cornerRadii, borderInsets);
-
+  // HippyLogInfo(@"HippyGetSolidBorderImage %@", backgroundColor);
   const BOOL makeStretchable =
   (borderInsets.left + cornerInsets.topLeft.width +
    borderInsets.right + cornerInsets.bottomRight.width <= viewSize.width) &&

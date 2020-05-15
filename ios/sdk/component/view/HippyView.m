@@ -453,6 +453,19 @@ HIPPY_NOT_IMPLEMENTED(- (instancetype)initWithCoder:unused)
   };
 }
 
+- (HippyBoxShadow)getBoxShadow
+//- (NSString*)getBoxShadow
+{
+//    NSLog(@"getBoxShadowColor %@", _boxShadowColor);
+    NSLog(@"getBoxShadowOpacity %f", _boxShadowOpacity);
+//    return _boxShadow;
+    return (HippyBoxShadow){
+        _boxShadowColor,
+        _boxShadowOpacity,
+        CGSizeMake(5,5),
+    };
+}
+
 
 
 - (void)hippySetFrame:(CGRect)frame
@@ -537,6 +550,7 @@ void HippyBoarderColorsRelease(HippyBorderColors c)
     [self drawShadowForLayer];
     
     const HippyCornerRadii cornerRadii = [self cornerRadii];
+    const HippyBoxShadow boxshadow = [self getBoxShadow];
     const UIEdgeInsets borderInsets = [self bordersAsInsets];
     const HippyBorderColors borderColors = [self borderColors];
     UIColor *backgroundColor = self.backgroundColor;
@@ -557,6 +571,13 @@ void HippyBoarderColorsRelease(HippyBorderColors c)
     // iOS clips to the outside of the border, but CSS clips to the inside. To
     // solve this, we'll need to add a container view inside the main view to
     // correctly clip the subviews.
+    if (boxshadow.boxShadowColor) {
+        layer.shadowColor = [UIColor redColor].CGColor;
+//        layer.shadowColor = boxshadow.boxShadowColor;
+        layer.shadowOpacity = boxshadow.boxShadowOpacity;
+        layer.shadowOffset = CGSizeMake(-5,-5);
+    }
+        
     
     if (useIOSBorderRendering && !_backgroundImageUrl) {
         layer.cornerRadius = cornerRadii.topLeft;
@@ -754,6 +775,26 @@ setBorderRadius(TopLeft)
 setBorderRadius(TopRight)
 setBorderRadius(BottomLeft)
 setBorderRadius(BottomRight)
+
+#pragma mark - BoxShadow
+
+#define setBoxShadowColor()                      \
+  - (void)setBoxShadowColor:(CGColorRef)color \
+{                                              \
+    NSLog(@"setBoxShadowColor %@", color);          \
+    _boxShadowColor = color;                    \
+    [self.layer setNeedsDisplay];           \
+}
+setBoxShadowColor()
+
+#define setBoxShadowOpacity()                      \
+  - (void)setBoxShadowOpacity:(CGFloat)opacity \
+{                                              \
+    NSLog(@"setBoxShadowOpacity %f", opacity);          \
+    _boxShadowOpacity = opacity;                    \
+    [self.layer setNeedsDisplay];           \
+}
+setBoxShadowOpacity()
 
 #pragma mark - Border Style
 

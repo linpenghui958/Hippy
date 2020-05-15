@@ -85,6 +85,13 @@
 @property (nonatomic, assign) CGFloat borderBottomRightRadius;
 
 /**
+* BoxShadow.
+*/
+@property (nonatomic, assign) CGColorRef boxShadowColor;
+@property (nonatomic, assign) CGSize boxShadowOffset;
+@property (nonatomic, assign) CGFloat boxShadowOpacity;
+
+/**
  * Border colors (actually retained).
  */
 @property (nonatomic, assign) CGColorRef borderTopColor;
